@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Tanda</string>
+    <string name="preference_file_key" translatable="false">com.naltynbekkz.tanda.PREFERENCE_FILE_KEY</string>
+</resources>

@@ -1,0 +1,91 @@
+import com.naltynbekkz.buildsrc.*
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.naltynbekkz.tanda"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+        viewBinding = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.COMPOSE
+        kotlinCompilerVersion Versions.KOTLIN
+    }
+}
+
+dependencies {
+
+    implementation(project(Modules.CORE))
+
+    implementation(project(Modules.Features.AUTH))
+    implementation(project(Modules.Features.SCHOOLS))
+
+    implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.APPCOMPAT)
+    implementation(Dependencies.MATERIAL)
+    testImplementation(TestDependencies.JUNIT)
+    androidTestImplementation(AndroidTestDependencies.JUNIT)
+    androidTestImplementation(AndroidTestDependencies.ESPRESSO)
+
+    implementation(Dependencies.COMPOSE_UI)
+    implementation(Dependencies.COMPOSE_MATERIAL)
+    implementation(Dependencies.COMPOSE_UI_TOOLING)
+    implementation(Dependencies.COMPOSE_NAVIGATION)
+    implementation(Dependencies.COMPOSE_LIVEDATA)
+    implementation(Dependencies.COMPOSE_MATERIAL_ICONS_CORE)
+    implementation(Dependencies.COMPOSE_MATERIAL_ICONS_EXTENDED)
+
+    implementation(Dependencies.HILT_ANDROID)
+    implementation(Dependencies.HILT_VIEWMODEL)
+    kapt(AnnotationProcessorDependencies.HILT)
+    kapt(AnnotationProcessorDependencies.HILT_ANDROID)
+
+    implementation(Dependencies.LIFECYCLE)
+    implementation(Dependencies.LIFECYCLE_LIVEDATA)
+    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+
+    implementation(Dependencies.NAVIGATION_UI)
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+
+    implementation(Dependencies.ROOM)
+    implementation(Dependencies.ROOM_KTX)
+    kapt(AnnotationProcessorDependencies.ROOM)
+
+    implementation(Dependencies.RETROFIT)
+    implementation(Dependencies.RETROFIT_MOCK)
+    implementation(Dependencies.RETROFIT_CONVERTER)
+    implementation(Dependencies.LOGGER)
+
+}
